@@ -42,6 +42,7 @@ jobs:
 
     - name: Create ngrok config file
       run: |
+        Add-Content -Path ngrok.yml -Value "version: '2'"
         Add-Content -Path ngrok.yml -Value "authtoken: $Env:NGROK_AUTH_TOKEN"
         Add-Content -Path ngrok.yml -Value "tunnels:"
         Add-Content -Path ngrok.yml -Value "  rdp:"
