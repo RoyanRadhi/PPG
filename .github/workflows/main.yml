@@ -28,14 +28,8 @@ jobs:
 
     - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "P@ssw0rd!" -Force)
 
-    - name: Open port 28015 UDP
-      run: New-NetFirewallRule -DisplayName "Open port 28015 UDP" -Direction Inbound -Protocol UDP -LocalPort 28015 -Action Allow
-
     - name: Open port 28016 TCP
       run: New-NetFirewallRule -DisplayName "Open port 28016 TCP" -Direction Inbound -Protocol TCP -LocalPort 28016 -Action Allow
-
-    - name: Open port 28017 UDP
-      run: New-NetFirewallRule -DisplayName "Open port 28017 UDP" -Direction Inbound -Protocol UDP -LocalPort 28017 -Action Allow
 
     - name: Open port 28082 TCP
       run: New-NetFirewallRule -DisplayName "Open port 28082 TCP" -Direction Inbound -Protocol TCP -LocalPort 28082 -Action Allow
@@ -48,15 +42,9 @@ jobs:
         Add-Content -Path ngrok.yml -Value "  rdp:"
         Add-Content -Path ngrok.yml -Value "    addr: 3389"
         Add-Content -Path ngrok.yml -Value "    proto: tcp"
-        Add-Content -Path ngrok.yml -Value "  port28015udp:"
-        Add-Content -Path ngrok.yml -Value "    addr: 28015"
-        Add-Content -Path ngrok.yml -Value "    proto: udp"
         Add-Content -Path ngrok.yml -Value "  port28016tcp:"
         Add-Content -Path ngrok.yml -Value "    addr: 28016"
         Add-Content -Path ngrok.yml -Value "    proto: tcp"
-        Add-Content -Path ngrok.yml -Value "  port28017udp:"
-        Add-Content -Path ngrok.yml -Value "    addr: 28017"
-        Add-Content -Path ngrok.yml -Value "    proto: udp"
         Add-Content -Path ngrok.yml -Value "  port28082tcp:"
         Add-Content -Path ngrok.yml -Value "    addr: 28082"
         Add-Content -Path ngrok.yml -Value "    proto: tcp"
